@@ -1,0 +1,33 @@
+<div class="form_container">
+  <form onsubmit={{action "register" on='submit'}}>
+    <div class="form_content">
+      <div class="input_field multi">
+        <span><i aria-hidden="true" class="fa fa-user"></i></span>
+        {{input type="text" name="name" placeholder="Имя" value=name}}
+        {{input type="text" name="surname" placeholder="Фамилия" value=surname}}
+      </div>
+      <div class="input_field">
+        <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+        {{input type="email" name="email" placeholder="Email" value=email}}
+      </div>
+      <div class="input_field">
+        <span><i aria-hidden="true" class="fa fa-address-card"></i></span>
+        {{input type="text" name="login" placeholder="Введите логин" value=login}}
+      </div>
+      <div class="input_field">
+        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+        {{input type="password" name="password" placeholder="Пароль"  value=password}}
+      </div>
+      <div class="input_field">
+        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+        {{input type="password" name="password" placeholder="Введите пароль еще раз" value=repeatPas}}
+      </div>
+      <div class="input_field"> <span><i aria-hidden="true" class="fa fa-calendar-alt"></i></span>
+        {{input type="date" name="birthdayDate" placeholder="Введите дату рождения" value=birthdayDate}}
+      </div>
+      <div class="btn__form_container ">
+        <button class="btn btn_form" type="submit"> Зарегистрироваться </button>
+      </div>
+    </div>
+  </form>
+</div>

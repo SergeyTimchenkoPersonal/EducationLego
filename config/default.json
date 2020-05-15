@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "adminPassword": "0000",
+  "mongoUrl": "mongodb+srv://Sergey:1q2w3e@cluster0-th6vg.mongodb.net/test?retryWrites=true&w=majority"
+}

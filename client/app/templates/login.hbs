@@ -1,0 +1,21 @@
+<div class="form_container">
+  <form {{action 'authentificate' on='submit'}}>
+    <div class="form_content">
+      <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+        {{input type="text" name="login" value=login placeholder="Введите логин"}}
+      </div>
+      <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+        {{input type="password" name="password" value=password placeholder="Пароль"}}
+      </div>
+      <div class="btn__form_container ">
+        <button class="btn btn_form" type='submit'>Войти</button>
+      </div>
+    </div>
+  </form>
+  {{#if errorMessage}}
+    <p>
+      <strong>Не получилось войти</strong>
+      <code>{{errorMessage}}</code>
+    </p>
+  {{/if}}
+</div>
