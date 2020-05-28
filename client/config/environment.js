@@ -4,6 +4,8 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'ember-quickstart',
     environment,
+    namespace: 'api',
+    url: 'http://localhost:5000',
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {

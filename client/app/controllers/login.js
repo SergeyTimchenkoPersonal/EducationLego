@@ -6,19 +6,25 @@ import { inject as service } from '@ember/service'
 export default class LoginController extends Controller {
 
   @service session
+  @tracked login = 'admin'
+  @tracked password = 'admin0'
 
   @tracked errorMessage = null
 
-  // get routeAfterAuthentication() {
-  //   return 'main'
-  // }
-
   @action
-  authentificate() {
-    // const { login, password} = this.getProperties('login', 'password')
-    //
-    // this.get('session').authentificate('authenticator:oauth2', login, password).catch((reason) => {
-    //   this.set('errorMessage', reason.error)
-    // })
+  async signUp(login, password) {
+    const attrs = { login, password }
+    try {
+      console.log('login', login, password);
+      const session = this.get('session');
+      await session.authenticate('authenticator:oauth2', login, password);
+    } catch (e) {
+      console.log(e);
+    }
+    if (this.session.isAuthenticated) {
+        console.log('Вы вошли на сайт');
+        console.log(this.session.data.authenticated.user);
+        // this.transitionToRoute('main')
+      }
   }
 }

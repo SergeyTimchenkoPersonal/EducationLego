@@ -5,13 +5,14 @@ import { inject as service } from '@ember/service'
 
 export default class ApplicationController extends Controller {
 
-  @tracked session = false;
-  @tracked username = 'Sergey'
+  @service session
   @tracked pageTitle = ''
 
   @action
   logout() {
     this.get('session').invalidate()
   }
+
+
 
 }

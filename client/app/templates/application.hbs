@@ -1,39 +1,55 @@
-<header class="header">
-  <div class="header_logo">
-    <div class="logo_image">
-      {{#link-to "main"}}
+<div class="header">
+  <div class="header_inner">
+    <div class="header_logo">
+      <div class="logo_image">
+        {{#link-to "main"}}
         <img src="/assets/images/logo.png" alt="Logo">
-      {{/link-to}}
-    </div>
-    <div class="logo_text">
-      {{#link-to "main"}}
-        Электронный учебник по робототехнике
-      {{/link-to}}
-    </div>
-  </div>
-  <div class="title_container">
-    <h1>{{pageTitle}}</h1>
-  </div>
-  <div class="header_account_control">
-    {{#if session.isAuthentificated}}
-      <div class="username">
-        {{username}}
+        {{/link-to}}
       </div>
-      <button class="btn" {{action logout}}>Выйти</button>
-    {{else}}
+      <div class="logo_text">
+        {{#link-to "main"}}
+        Электронный учебник по робототехнике
+        {{/link-to}}
+      </div>
+    </div>
+    <div class="title_container">
+      <h1>{{pageTitle}}</h1>
+    </div>
+    <div class="user-block">
+      {{#if this.session.isAuthenticated}}
+        <BasicDropdown as |dd|>
+          <dd.Trigger>
+            {{this.session.data.authenticated.user.name}}
+            <div class="user-block__avatar">
+              <img src="/assets/images/icon.png" class="avatar">
+            </div>
+          </dd.Trigger>
+          <dd.Content>
+            <button class="btn--user btn--in-dropdown">
+              {{#link-to "profile"}}
+                View Profile
+              {{/link-to}}
+            </button>
+            <button {{action "logout"}} class="btn--user btn--in-dropdown">
+              Logout
+            </button>
+          </dd.Content>
+        </BasicDropdown>
+      {{else}}
       <button class="btn">
         {{#link-to "register"}}
-          Зарегистрироваться
+        Зарегистрироваться
         {{/link-to}}
       </button>
       <button class="btn">
         {{#link-to "login"}}
-          Войти
+        Войти
         {{/link-to}}
       </button>
-    {{/if}}
+      {{/if}}
+    </div>
   </div>
-</header>
+</div>
 <div class="container">
   <div class="sidebar">
     <div class="sidebar_nav">
@@ -43,7 +59,7 @@
         {{/link-to}}
       </div>
       <div class="sidebar_item">
-        {{#link-to "catalog"}}
+        {{#link-to "robots"}}
         Каталог
         {{/link-to}}
       </div>

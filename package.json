@@ -1,33 +1,37 @@
 {
-  "name": "server",
+  "name": "educationlego",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app.js",
-    "server": "nodemon app.js",
-    "client": "npm run start --prefix client",
-    "client:install": "npm install --prefix client",
-    "client:build": "npm run build --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergeyTimchenkoPersonal/EducationLego.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergeyTimchenkoPersonal/EducationLego/issues"
+  },
+  "homepage": "https://github.com/SergeyTimchenkoPersonal/EducationLego#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "concurrently": "^5.2.0",
     "config": "^3.3.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.4.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
-    "mongodb": "^3.5.6",
-    "mongoose": "^5.9.11"
+    "moment": "^2.25.3",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.14",
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.4"
   }
 }

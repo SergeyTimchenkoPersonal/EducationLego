@@ -4,7 +4,7 @@ const buildItemSchema = new Schema({
   name: String,
   description: String,
   type: String,
-  popularity: String,
+  popularity: Number,
   programId: String,
   instructionId: String,
   createdAt: String,
