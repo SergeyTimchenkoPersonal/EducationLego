@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed, action } from '@ember/object'
+import { action } from '@ember/object'
 import { tracked } from '@glimmer/tracking'
 import { inject as service } from '@ember/service'
 
@@ -9,10 +9,9 @@ export default class ApplicationController extends Controller {
   @tracked pageTitle = ''
 
   @action
-  logout() {
-    this.get('session').invalidate()
+  async logout() {
+    await this.get('session').invalidate()
+    this.transitionToRoute('main')
   }
-
-
 
 }

@@ -1,0 +1,22 @@
+{{#if isLoading}}
+  <div class="loading-block">
+    {{fa-icon "spinner" class="fa-spinner fa-pulse"}}
+  </div>
+{{else}}
+  <div class="robot--list">
+    {{#if this.session.data.authenticated.user.isAdmin}}
+      {{#link-to "addRobot"}}
+        <div class="card--robot add--robot">+</div>
+      {{/link-to}}
+    {{/if}}
+    {{#if filteredRobots.length}}
+      {{#each @filteredRobots as |robot|}}
+        <RobotItem @robot={{robot}} @selectRobot={{action "selectRobot"}}/>
+      {{/each}}
+    {{else}}
+      {{#each @robots as |robot|}}
+        <RobotItem @robot={{robot}} @selectRobot={{action "selectRobot"}}/>
+      {{/each}}
+    {{/if}}
+  </div>
+{{/if}}

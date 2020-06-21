@@ -1,35 +1,34 @@
-<div class="form_container">
-  <form>
-    <div class="form_content">
-      <div class="input_field multi">
-        <span><i aria-hidden="true" class="fa fa-user"></i></span>
-        {{input type="text" required=true name="name" placeholder="Имя" value=name}}
-        {{input type="text" required=true name="surname" placeholder="Фамилия" value=surname}}
-      </div>
-      <div class="input_field">
-        <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-        {{input type="email" required=true name="email" placeholder="Email" value=email}}
-      </div>
-      <div class="input_field">
-        <span><i aria-hidden="true" class="fa fa-address-card"></i></span>
-        {{input type="text" required=true name="login" placeholder="Введите логин" value=login}}
-      </div>
-      <div class="input_field">
-        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-        {{input type="password" required=true name="password" placeholder="Пароль"  value=password}}
-      </div>
-      <div class="input_field">
-        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-        {{input type="password" required=true name="password" placeholder="Введите пароль еще раз" value=repeatPas}}
-      </div>
-      {{#if errorMessage}}
-        <div class="error_message">
-          {{errorMessage}}
-        </div>
-      {{/if}}
-      <div class="btn__form_container ">
-        <button class="btn btn_form" type="button" {{action "register"}}> Зарегистрироваться </button>
-      </div>
+<div class="form--container">
+  <div class="form--title">
+    Регистрация
+  </div>
+  <form class="form--content" {{action "register" on="submit"}}>
+    <div class="form--input multi">
+      <span><i aria-hidden="true" class="fa fa-user"></i></span>
+      {{input type="text" required=true name="name" placeholder="Имя" value=name}}
+      {{input type="text" required=true name="surname" placeholder="Фамилия" value=surname}}
     </div>
-  </form>
+    <div class="form--input">
+      <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+      {{input type="email" required=true name="email" placeholder="Email" value=email}}
+    </div>
+    <div class="form--input">
+      <span><i aria-hidden="true" class="fa fa-address-card"></i></span>
+      {{input type="text" required=true name="login" placeholder="Введите логин" value=login}}
+    </div>
+    <div class="form--input">
+      <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+      {{input type="password" required=true name="password" placeholder="Пароль" minlength="6" value=password}}
+    </div>
+    <div class="form--input">
+      <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+      {{input type="password" required=true name="password" placeholder="Введите пароль еще раз" value=repeatPas}}
+    </div>
+  <div class="form--error">
+    {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+    {{/if}}
+  </div>
+  <button class="btn btn--form" type="submit"> Зарегистрироваться </button>
+</form>
 </div>

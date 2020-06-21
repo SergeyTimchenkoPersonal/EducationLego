@@ -1,0 +1,52 @@
+<div class="form--container">
+  <div class="form--title">
+    Добавление постройки
+  </div>
+  <form class="form--content" {{action "createRobot" on="submit"}}>
+    <div class="form--input">
+      {{input type="text" required=true value=name placeholder="Название" }}
+    </div>
+    <div class="form--type">
+      <div class="input--label type-label">Тип постройки</div>
+      <div class="robot--type">
+        <label class="container--radio type-lego">WeDo
+          {{input type="radio" required=true value='WeDo' change=(action (mut type) "WeDo") name="type"}}
+          <span class="radio--text"></span>
+        </label>
+        <label class="container--radio  type-lego">EV3
+          {{input type="radio" required=true value='EV3' change=(action (mut type) "EV3") name="type"}}
+          <span class="radio--text"></span>
+        </label>
+      </div>
+    </div>
+    <div class="form--input form--input-big" >
+      <textarea name="name" rows="8" cols="80" placeholder="Описание" value={{description}}></textarea>
+    </div>
+    <div class="input--label label-double">
+      <label for="instruction">Инструкция(PDF)</label>
+      <label for="robotImage">Изображение постройки(JPEG, PNG, JPG)</label>
+    </div>
+    <div class="form--input input-double">
+      <input type="file" required  id="instruction" accept="application/pdf" onchange={{action "uploadInstruction"}}/>
+      <input type="file" required  id="robotImage" accept="image/jpg image/jpeg image/png" onchange={{action "uploadRobotImage"}}/>
+    </div>
+    {{input class ="checkbox " type="checkbox" name="" checked=hasProgram id="addProgram" }}
+    <label class="label--checkbox checkbox-margin-bottom" for="addProgram"><div><i class="fa fa-check"></i></div>Добавить программу</label>
+    {{#if hasProgram}}
+      <div class="input--label label-double">
+        <label for="program">Программа(WeDo, EV3)</label>
+        <label for="programImage">Изображение программы(JPEG, PNG, JPG)</label>
+      </div>
+      <div class="form--input input-double">
+        <input type="file" required id="program" accept="application/WeDo application/EV3" onchange={{action "uploadProgram"}}/>
+        <input type="file" id="programImage" accept="image/jpg image/jpeg image/png" onchange={{action "uploadProgramImage"}}/>
+      </div>
+    {{/if}}
+    {{#if errorMessage}}
+      <div class="form--error">
+        {{errorMessage}}
+      </div>
+    {{/if}}
+    <button class="btn btn--form" type="submit"> Добавить </button>
+  </form>
+</div>

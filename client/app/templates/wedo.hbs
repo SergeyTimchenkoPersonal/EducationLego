@@ -1,0 +1,7 @@
+{{#if this.session.isAuthenticated}}
+  <a class="btn btn-margin btn-download" href="/assets/book-WeDo.pdf" download>Скачать инструкцию</a>
+{{/if}}
+<!-- <div class="pdf-container"> -->
+  <!-- {{pdf-js pdf="/assets/book-WeDo.pdf"}} -->
+<!-- </div> -->
+{{pdf-widget src="/assets/book-WeDo.pdf"}}

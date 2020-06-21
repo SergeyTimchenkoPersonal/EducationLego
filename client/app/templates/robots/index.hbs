@@ -1,0 +1,52 @@
+<div class="filter--container">
+  <div class="filter--inner">
+    <div class="filter--input filter--control">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      {{input type="search" name="filter_name" placeholder="Введите название постройки" value=robotName key-up="searchRobots"}}
+    </div>
+
+    <input class ="checkbox" type="checkbox" name="" checked={{hasProgram}} id="program" {{action "toggleHasProgram" on="change"}} />
+    <label class="label--checkbox" for="program"><div><i class="fa fa-check"></i></div>С программой</label>
+    <div class="filter-type">
+      <div class="filter-type-title">
+        Тип
+      </div>
+      <div class="filter-types">
+        <label class="container--radio filter--control">Все
+          <input type="radio" value="all" name="type" {{action "filterByType" "all" on="change"}}/>
+          <span class="radio--text"></span>
+        </label>
+        <label class="container--radio filter--control">WeDo
+          <input type="radio" value="WeDo" name="type" {{action "filterByType" "WeDo" on="change"}}/>
+          <span class="radio--text"></span>
+        </label>
+
+        <label class="container--radio filter--control">EV3
+          <input type="radio" value="EV3" name="type" {{action "filterByType" "EV3" on="change"}}/>
+          <span class="radio--text"></span>
+        </label>
+      </div>
+    </div>
+    <div class="filter-sort">
+      <div class="filter-sort-title">
+          Сортировка
+      </div>
+      <div class="filter-sorts">
+        <label class="container--radio filter--control">По дате добавления
+          <input type="radio" value="createdAt" name="radio"{{action "toggleSort" "createdAt" on="change"}} />
+          <span class="radio--text"></span>
+        </label>
+        <label class="container--radio filter--control">По популярности
+          <input type="radio" value="popularity" name="radio" {{action "toggleSort" "popularity" on="change"}}/>
+          <span class="radio--text"></span>
+        </label>
+      </div>
+    </div>
+  <!--  <div class="btn" {{action "getRobots"}}>
+      Обновить
+    </div> -->
+  </div>
+</div>
+<div class="robot--list">
+  <RobotList @robots={{robots}} @showRobot={{this.showItem}} @isLoading={{robots.isPending}}/>
+</div>

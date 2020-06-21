@@ -1,0 +1,16 @@
+<div class="card--robot" >
+  <div class="card--robot-name">
+    <span>{{robot.name}}</span>
+  </div>
+  <div class="card--robot-image" {{action "selectRobot" robot.id}}>
+    <img src={{robot.robotImage}} alt="img">
+  </div>
+  <div class="card--robot-likes">
+    <div class="likes-number">Лайки:{{robot.popularity}}</div>
+    {{#if this.session.isAuthenticated}}
+      <div class="like-button {{if (eq robot.isLiked  true) "liked"}}" type="button" id="like" {{action "createLike" robot.id}}>
+        <span> <i aria-hidden="true" class="fa fa-thumbs-up"></i> </span>
+      </div>
+    {{/if}}
+  </div>
+</div>

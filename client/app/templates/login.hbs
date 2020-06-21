@@ -1,20 +1,19 @@
-<div class="form_container">
-  <form {{action "signUp" login password on="submit"}}>
-    <div class="form_content">
-      <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-        {{input type="text" required=true name="login" value=login placeholder="Введите логин"}}
-      </div>
-      <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-        {{input type="password" required=true name="password" value=password placeholder="Пароль"}}
-      </div>
-      {{#if errorMessage}}
-        <div class="error_message">
-          {{errorMessage}}
-        </div>
-      {{/if}}
-      <div class="btn__form_container ">
-        <button class="btn btn_form" type='submit'>Войти</button>
-      </div>
+<div class="form--container">
+  <div class="form--title">
+    Вход в аккаунт
+  </div>
+  <form class="form--content" {{action "signUp" login password on="submit"}}>
+    <div class="form--input"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+      {{input type="text" name="login" value=login placeholder="Введите логин" required=true}}
     </div>
+    <div class="form--input"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+      {{input type="password"  name="password" value=password placeholder="Пароль" required=true}}
+    </div>
+    <div class="form--error">
+      {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+      {{/if}}
+    </div>
+    <button class="btn btn--form" type="submit">Войти</button>
   </form>
 </div>

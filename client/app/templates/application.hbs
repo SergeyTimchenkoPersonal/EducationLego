@@ -1,76 +1,85 @@
 <div class="header">
-  <div class="header_inner">
-    <div class="header_logo">
-      <div class="logo_image">
-        {{#link-to "main"}}
+  <div class="header--inner">
+    <div class="header--logo">
+      {{#link-to "main"}}
         <img src="/assets/images/logo.png" alt="Logo">
-        {{/link-to}}
-      </div>
-      <div class="logo_text">
-        {{#link-to "main"}}
-        Электронный учебник по робототехнике
-        {{/link-to}}
+      {{/link-to}}
+      <div class="header--pageTitle-container">
+        <h1>{{pageTitle}}</h1>
       </div>
     </div>
-    <div class="title_container">
-      <h1>{{pageTitle}}</h1>
-    </div>
-    <div class="user-block">
+    <div class="header--user-block">
       {{#if this.session.isAuthenticated}}
         <BasicDropdown as |dd|>
           <dd.Trigger>
-            {{this.session.data.authenticated.user.name}}
-            <div class="user-block__avatar">
-              <img src="/assets/images/icon.png" class="avatar">
+            <div class="user-block">
+              <div class="user-block--name">
+                {{this.session.data.authenticated.user.name}}
+              </div>
+              <div class="user-block--avatar">
+                <img src="/assets/images/icon.png" class="avatar">
+              </div>
             </div>
           </dd.Trigger>
           <dd.Content>
             <button class="btn--user btn--in-dropdown">
               {{#link-to "profile"}}
-                View Profile
+                Профиль
               {{/link-to}}
             </button>
             <button {{action "logout"}} class="btn--user btn--in-dropdown">
-              Logout
+              Выйти
             </button>
           </dd.Content>
         </BasicDropdown>
       {{else}}
-      <button class="btn">
-        {{#link-to "register"}}
-        Зарегистрироваться
-        {{/link-to}}
-      </button>
-      <button class="btn">
-        {{#link-to "login"}}
-        Войти
-        {{/link-to}}
-      </button>
+        <div class="user--block-btns">
+          {{#link-to "register"}}
+            <div class="btn user--block-btn">
+              Зарегистрироваться
+            </div>
+          {{/link-to}}
+          {{#link-to "login"}}
+          <div class="btn user--block-btn">
+            Войти
+            </div>
+          {{/link-to}}
+        </div>
       {{/if}}
     </div>
   </div>
 </div>
 <div class="container">
-  <div class="sidebar">
-    <div class="sidebar_nav">
-      <div class="sidebar_item">
-        {{#link-to "main"}}
-        Главная
-        {{/link-to}}
-      </div>
-      <div class="sidebar_item">
-        {{#link-to "robots"}}
-        Каталог
-        {{/link-to}}
-      </div>
-      <div class="sidebar_item">
-        {{#link-to "theory"}}
-        Теория
-        {{/link-to}}
-      </div>
-    </div>
+  <div class="container--sidebar">
+    <ul class="sidebar--nav">
+      {{#link-to "main"}}
+        <li class="nav--item">
+          Главная
+        </li>
+      {{/link-to}}
+      {{#link-to "robots"}}
+        <li class="nav--item">
+          Каталог
+        </li>
+      {{/link-to}}
+      <li class="nav--item">
+          Теория
+          <ul class="menu--drop">
+            {{#link-to "wedo"}}
+              <li class="nav--item">Lego WeDo</li>
+            {{/link-to}}
+            {{#link-to "mindstorms"}}
+              <li class="nav--item">Lego Mindstorms</li>
+            {{/link-to}}
+            {{#link-to "useful"}}
+              <li class="nav--item">Полезные ссылки</li>
+            {{/link-to}}
+          </ul>
+      </li>
+    </ul>
+    {{paper-toaster}}
   </div>
-  <div class="content">
+  <div class="container--content">
     {{outlet}}
   </div>
 </div>

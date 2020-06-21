@@ -1,0 +1,6 @@
+{{#if this.session.isAuthenticated}}
+  <a class="btn btn-margin btn-download" href="/assets/book-WeDo.pdf" download>Скачать инструкцию</a>
+{{/if}}
+<div class="ember-pdf-js.viewer  pdfViewerContainer">
+  {{pdf-js pdf="/assets/book-EV3.pdf"}}
+</div>

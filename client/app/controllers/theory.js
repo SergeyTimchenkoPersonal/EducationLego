@@ -1,7 +1,4 @@
-import Controller from '@ember/controller';
-import { computed, action } from '@ember/object'
-import { tracked } from '@glimmer/tracking'
-import { inject as service } from '@ember/service'
+import Controller from '@ember/controller'
 
 export default class TheoryController extends Controller {
 

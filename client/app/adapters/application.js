@@ -13,8 +13,11 @@ export default class ApplicationAdapter extends RESTAdapter.extend(DataAdapterMi
   get headers() {
     let headers = {};
     if (this.session.isAuthenticated) {
-      // OAuth 2
-      headers['Authorization'] = `Bearer ${this.session.data.authenticated.access_token}`;
+      const userId = this.session.data.authenticated.user.id
+      headers = {
+        Authorization: `Bearer ${this.session.data.authenticated.access_token}`,
+        UserId: userId
+      }
     }
 
     return headers;

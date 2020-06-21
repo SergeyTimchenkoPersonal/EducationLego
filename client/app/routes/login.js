@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route';
-// import ApplicationRouteMixin from 'ember-simple-auth-auth0/mixins/application-route-mixin'
+import { computed, action } from '@ember/object'
+import { tracked } from '@glimmer/tracking'
+import { alias } from '@ember/object/computed'
 import { inject as service } from '@ember/service'
 
 export default class LoginRoute extends Route {
@@ -11,21 +13,12 @@ export default class LoginRoute extends Route {
 
   beforeModel() {
     super.beforeModel(...arguments)
-    this.controllerFor('application').set('pageTitle', 'Аутентификация')
+    this.controllerFor('application').set('pageTitle', 'Авторизация')
   }
 
-  // afterModel() {
-  //   if (!this.session.isAuthenticated) {
-  //     const authOptions = {
-  //       audience: 'api',
-  //       responseType: 'token',
-  //       scope: 'openid email profile'
-  //     }
-  //     this.session.authenticate('authenticator:auth0-universal', authOptions, (err, email) => {
-  //       console.log(`Email link sent to ${email}!`)
-  //     })
-  //   } else {
-  //     this.transitionTo('main')
-  //   }
-  // }
+  deactivate() {
+    this.controller.set('login', null)
+    this.controller.set('password', null)
+    this.controller.set('errorMessage', null)
+  }
 }

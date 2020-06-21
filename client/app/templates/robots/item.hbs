@@ -1,0 +1,63 @@
+<div class="robot--screen">
+  <div class="robot--name">
+    {{robot.name}}
+  </div>
+  <div class="robot--data">
+    <div class="robot--information">
+      {{#if robot.description}}
+      <p>Описание: {{robot.description}}</p>
+      {{/if}}
+      <p>Тип: {{robot.type}}</p>
+      <p>Количество лайков: {{robot.popularity}}</p>
+      <p>Дата добавления: {{robot.createdAt}}</p>
+    </div>
+    {{#if this.session.data.authenticated.user.isAdmin}}
+      <div class="robot--admin-controls">
+        <div class="btn btn-margin" {{action "editRobot" robot.id}}> Редактировать</div>
+        <div class="btn btn-margin"{{action "cancelRobot" robot.id}}>Удалить</div>
+      </div>
+    {{/if}}
+  </div>
+  <div class="robot--files">
+    <div class="robot--links">
+      {{#if this.session.isAuthenticated}}
+      {{#if robot.program}}
+        <a class="btn btn-margin btn-download" href={{robot.program}}>Скачать программу</a>
+      {{/if}}
+        <a class="btn btn-margin btn-download" href={{robot.instruction}} download>Скачать инструкцию</a>
+      {{/if}}
+    </div>
+    {{#if robot.programImage}}
+      <div class="robot--programImage">
+        <p>Рекомендуемая программа</p>
+        <img src={{robot.programImage}} alt="">
+      </div>
+    {{/if}}
+  </div>
+    {{pdf-js pdf=robot.instruction}}
+</div>
+
+{{#if isShowModal}}
+  <div class="modal">
+    <div class="outer outer--modal" {{action "closeModal"}}>
+    </div>
+    <div class=modal__window>
+      <div class="modal__header">
+        <h2 class="modal__title">Предупреждение</h2>
+        <div class="modal__close" {{action "closeModal"}}>&times;</div>
+      </div>
+      <div class="modal__body">
+        <p class="modal__text">Вы точно хотите удалить постройку?</p>
+        <div class="modal__buttons-container">
+          <button class="btn" {{action "acceptOperation"}}>
+            Да
+          </button>
+          <button class="btn modal__button--alt" {{action "closeModal"}}>
+            Нет
+          </button>
+        </div>
+        <p class="modal__text--second">Постройка будет удалена с каталога</p>
+      </div>
+    </div>
+  </div>
+{{/if}}
